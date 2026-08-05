@@ -1,0 +1,1 @@
+CREATE INDEX `idx_tickets_event_id` ON `tickets` (`event_id`);
