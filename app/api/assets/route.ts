@@ -1,0 +1,3 @@
+import { travelEnv } from "../../../db/travel";
+
+export async function POST(request:Request){const form=await request.formData();const file=form.get("file");if(!(file instanceof File)||!file.type.startsWith("image/"))return Response.json({error:"Image required"},{status:400});if(file.size>8*1024*1024)return Response.json({error:"File too large"},{status:413});const id=crypto.randomUUID();await travelEnv.TICKETS.put(`backgrounds/${id}`,await file.arrayBuffer(),{httpMetadata:{contentType:file.type},customMetadata:{fileName:file.name}});return Response.json({url:`/api/assets/${id}`},{status:201});}
