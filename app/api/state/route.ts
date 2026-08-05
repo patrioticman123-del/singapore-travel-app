@@ -1,18 +1,29 @@
-import { ensureTravelSchema, listTickets, travelEnv } from "../../../db/travel";
+import { list, put } from "@vercel/blob";
+import { isAdmin } from "../../../lib/admin-auth";
+
+const STATE_PATH = "shared/singapore-travel-state.json";
 
 export async function GET() {
-  await ensureTravelSchema();
-  const row=await travelEnv.DB.prepare(`SELECT payload, version FROM app_state WHERE id = ?`).bind(1).first<{payload:string;version:number}>();
-  const saved=row?JSON.parse(row.payload):{hero:null,days:null,expenses:[]};
-  return Response.json({ ...saved, tickets:await listTickets(), version:row?.version||0 }, { headers:{"cache-control":"no-store"} });
+  try {
+    const result = await list({ prefix: STATE_PATH, limit: 1 });
+    if (!result.blobs[0]) return Response.json({ hero: null, days: null, version: 0 });
+    const response = await fetch(result.blobs[0].url, { cache: "no-store" });
+    if (!response.ok) throw new Error("state unavailable");
+    return Response.json(await response.json(), { headers: { "cache-control": "no-store" } });
+  } catch {
+    return Response.json({ hero: null, days: null, version: 0 });
+  }
 }
 
-export async function PUT(request:Request) {
-  await ensureTravelSchema();
-  const body=await request.json() as {hero:unknown;days:unknown;expenses:unknown};
-  if(!Array.isArray(body.days)||!Array.isArray(body.expenses)) return Response.json({error:"Invalid data"},{status:400});
-  const current=await travelEnv.DB.prepare(`SELECT version FROM app_state WHERE id = ?`).bind(1).first<{version:number}>();
-  const version=(current?.version||0)+1;
-  await travelEnv.DB.prepare(`INSERT INTO app_state (id, payload, version, updated_at) VALUES (?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET payload = excluded.payload, version = excluded.version, updated_at = excluded.updated_at`).bind(1,JSON.stringify({hero:body.hero,days:body.days,expenses:body.expenses}),version,new Date().toISOString()).run();
-  return Response.json({version});
+export async function PUT(request: Request) {
+  if (!(await isAdmin())) return Response.json({ error: "只有管理者可以發布共用行程" }, { status: 401 });
+  const body = await request.json();
+  const state = { hero: body.hero, days: body.days, version: Date.now() };
+  await put(STATE_PATH, JSON.stringify(state), {
+    access: "public",
+    addRandomSuffix: false,
+    allowOverwrite: true,
+    contentType: "application/json",
+  });
+  return Response.json({ version: state.version });
 }

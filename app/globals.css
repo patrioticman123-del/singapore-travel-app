@@ -51,6 +51,13 @@ button { color:inherit; }
 @media (max-width:370px) { .content { padding-inline:14px; }.date-section { padding-inline:14px; }.timeline:before { left:76px; }.timeline-item summary { grid-template-columns:62px 12px 1fr 12px; }.event-actions { padding-left:90px; }.form-grid { grid-template-columns:1fr; }.form-grid .wide { grid-column:auto; } }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
+.mode-card { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; padding:15px; border:1px solid #a9c8c2; border-radius:16px; background:var(--mint); }
+.mode-card.admin { color:white; border-color:#235f5a; background:linear-gradient(135deg,#173b38,#0d5c56); }
+.mode-card small,.mode-card strong,.mode-card p { display:block; }.mode-card small { font-size:10px; font-weight:800; letter-spacing:.14em; opacity:.65; }.mode-card strong { margin-top:3px; font-size:16px; }.mode-card p { max-width:295px; margin:5px 0 0; font-size:12px; line-height:1.55; opacity:.78; }
+.mode-card.admin .secondary { flex:0 0 auto; color:white; border-color:rgba(255,255,255,.45); background:rgba(255,255,255,.12); }
+.form-error { margin:0 0 12px; padding:11px; color:#9c3328; background:#fff0ed; border-radius:10px; font-size:13px; }
+.form-grid button.wide { width:100%; }
+
 /* Larger mobile reading scale */
 .eyebrow,.feature-title p,.section-heading p { font-size:11px; }
 .date-section>label { font-size:13px; }.date-section select { padding:14px; font-size:15px; }
