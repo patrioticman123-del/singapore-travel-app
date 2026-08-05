@@ -1,0 +1,14 @@
+{
+  "name": "獅城慢遊｜新加坡 5 日自由行",
+  "short_name": "獅城慢遊",
+  "description": "五日行程、票券、導航與旅費都放在口袋裡。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f1e8",
+  "theme_color": "#0d5c56",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
