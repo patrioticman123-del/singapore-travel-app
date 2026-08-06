@@ -58,6 +58,35 @@ button { color:inherit; }
 .form-error { margin:0 0 12px; padding:11px; color:#9c3328; background:#fff0ed; border-radius:10px; font-size:13px; }
 .form-grid button.wide { width:100%; }
 
+/* Icon-only itinerary actions */
+.event-actions.icon-actions { gap:10px; }
+.icon-actions a,.icon-actions button { display:grid; place-items:center; width:46px; height:46px; padding:0; border-radius:14px; font-size:23px; line-height:1; }
+
+/* Centered, full-width local tickets */
+.compact-ticket { padding:16px; border-left-width:1px; text-align:center; }
+.compact-ticket:after { display:none; }
+.compact-ticket .ticket-top { text-align:left; }
+.compact-ticket p { max-width:none; margin:10px 0; text-align:center; }
+.ticket-image-button { display:block; width:100%; padding:0; border:0; background:transparent; cursor:zoom-in; }
+.ticket-image-button img { width:100%; max-height:62vh; margin:10px auto 0; object-fit:contain; object-position:center; }
+.compact-ticket .file-link { display:block; width:100%; text-align:center; }
+.image-lightbox { position:fixed; inset:0; z-index:95; display:grid; place-items:center; padding:56px 12px 18px; background:rgba(5,18,17,.95); }
+.image-lightbox img { width:100%; height:100%; object-fit:contain; object-position:center; }
+.image-lightbox button { position:absolute; top:max(14px,env(safe-area-inset-top)); right:16px; display:grid; place-items:center; width:44px; height:44px; border:1px solid rgba(255,255,255,.45); border-radius:50%; color:white; background:rgba(255,255,255,.12); font-size:30px; }
+
+/* Extra-large mobile reading scale */
+body { font-size:17px; }
+.hero h1 { font-size:28px; }.eyebrow { font-size:12px; }.trip-meta { font-size:11px; }
+.date-section>label { font-size:14px; }.date-section select { font-size:17px; line-height:1.4; }
+.section-heading h2,.feature-title h2 { font-size:32px; }.section-heading>div>span,.feature-title>div>span { font-size:16px; }
+.status-card small { font-size:12px; }.status-card strong { font-size:16px; }.status-card button { font-size:14px; }
+.timeline-item time { font-size:14px; }.timeline-item h3 { font-size:19px; }.timeline-item p { font-size:16px; line-height:1.7; }
+.reminder b { font-size:17px; }.reminder p { font-size:16px; }
+.bottom-nav button { font-size:13px; }.bottom-nav button span { font-size:23px; }
+.form-grid label,.day-edit label { font-size:14px; }.form-grid input,.form-grid select,.form-grid textarea,.day-edit input { font-size:17px; }
+.primary,.secondary,.danger { font-size:15px; }.edit-row time { font-size:14px; }.edit-row span { font-size:17px; }.edit-row small { font-size:11px; }
+.ticket-card h3 { font-size:19px; }.ticket-card p,.file-link { font-size:15px; }.modal-title h2 { font-size:28px; }
+
 /* Larger mobile reading scale */
 .eyebrow,.feature-title p,.section-heading p { font-size:11px; }
 .date-section>label { font-size:13px; }.date-section select { padding:14px; font-size:15px; }
