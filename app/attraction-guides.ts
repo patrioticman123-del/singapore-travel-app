@@ -1,34 +1,25 @@
 import { initialDays } from "./trip-data";
 
 export type AttractionGuide = {
-  id:string;
-  eventIds:string[];
-  date:string;
-  time:string;
-  title:string;
-  icon:string;
-  intro:string;
-  highlights:string[];
-  tips:string[];
-  sourceLabel:string;
-  sourceUrl:string;
+  id:string; eventIds:string[]; date:string; time:string; title:string; icon:string;
+  intro:string; history:string; tourSteps:string[]; sourceLabel:string; sourceUrl:string;
 };
 
 const event = (id:string) => initialDays.flatMap(day=>day.events.map(item=>({day,item}))).find(({item})=>item.id===id)!;
-
-function guide(id:string,eventIds:string[],title:string,icon:string,intro:string,highlights:string[],tips:string[],sourceLabel:string,sourceUrl:string):AttractionGuide {
-  const first=event(eventIds[0]);
-  return {id,eventIds,date:first.day.date,time:first.item.time,title,icon,intro,highlights,tips,sourceLabel,sourceUrl};
+function guide(id:string,eventIds:string[],title:string,icon:string,intro:string,history:string,tourSteps:string[],sourceLabel:string,sourceUrl:string):AttractionGuide {
+  const first=event(eventIds[0]); return {id,eventIds,date:first.day.date,time:first.item.time,title,icon,intro,history,tourSteps,sourceLabel,sourceUrl};
 }
 
 export const initialGuides:AttractionGuide[] = [
-  guide("merlion",["d1-5"],"魚尾獅公園與濱海灣","🦁","魚尾獅以獅頭與魚身象徵「獅城」及新加坡早期漁村歷史。公園正對濱海灣，是第一次到新加坡最適合認識城市天際線的位置。",["魚尾獅正面與側面取景","遠眺濱海灣金沙與藝術科學博物館","沿濱海灣步道散步"],["傍晚光線較柔和，接夜景最順","地面可能濕滑，拍照時留意水花與人潮"],"Visit Singapore 官方介紹","https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/marina-bay/merlion-park/"),
-  guide("gardens",["d1-7"],"濱海灣花園","🌳","濱海灣花園把園藝、永續設計與未來感建築放在同一座城市花園中。Supertree Grove 的垂直花園入夜後亮燈，是這晚的重點。",["Supertree Grove","Garden Rhapsody 聲光秀","依票券選擇 Cloud Forest 或 Flower Dome"],["先確認當日聲光秀與溫室入場時間","戶外免費區與付費溫室分開，票券放在對應行程最方便"],"Gardens by the Bay 官方介紹","https://www.gardensbythebay.com.sg/en/learn-with-us/explore-resources/articles/supertree-grove-and-supertree-observatory.html"),
-  guide("uss",["d2-3","d2-4","d2-6","d2-7"],"新加坡環球影城","🎬","東南亞的環球影城主題樂園，以電影與動畫主題設施、表演和角色見面為主。熱門設施排隊變化大，適合先確認官方 App 再決定順序。",["Transformers 3D","Battlestar Galactica","Revenge of the Mummy","Minion Land"],["入園先看等待時間與臨時停駛公告","身高限制與表演時刻以當日官方資訊為準","怕排隊可評估 Universal Express"],"Resorts World Sentosa 官方介紹","https://www.rwsentosa.com/en/play/universal-studios-singapore"),
-  guide("river-wonders",["d3-3","d3-5"],"River Wonders","🐼","以世界河川與淡水生態為主題的野生動物園，可依河域動線認識水生與陸生動物，並參觀大熊貓與 Amazon Flooded Forest 等展區。",["大熊貓展區","Amazon Flooded Forest","世界河川生態展區","Amazon River Quest（另依現場規定）"],["園區大部分路線有遮蔽，仍建議補水","動物活動與展區開放狀況以當日公告為準","表演座位通常需依官方規則預約"],"Mandai Wildlife Reserve 官方介紹","https://www.mandai.com/en/river-wonders.html"),
-  guide("night-safari",["d3-8"],"Night Safari","🦉","以夜行性動物與夜間棲地為主題，可搭乘 Safari Adventure Tram，再依體力走步道觀察不同動物。暗處不強行使用閃光，更容易適應環境。",["Safari Adventure Tram","步行探索路線","Creatures of the Night 動物介紹"],["確認票券入場時段並提早抵達","表演座位可能需在當日透過官方系統預約","夜間拍照避免閃光並降低螢幕亮度"],"Mandai Wildlife Reserve 官方訂位說明","https://www.mandai.com/en/book-presentation-seats.html"),
-  guide("kampong-gelam",["d4-4"],"Bugis・Haji Lane・Kampong Glam","🕌","甘榜格南是新加坡歷史悠久的城市街區，傳統商店、蘇丹回教堂、街頭藝術與新式咖啡館並存；Haji Lane 則以壁畫、獨立小店和狹窄街景聞名。",["蘇丹回教堂外觀","Bussorah Street","Haji Lane 壁畫與小店","Arab Street 布料與香氛商店"],["宗教場所請穿著得體並遵守參觀規則","下午較熱，可把咖啡休息排在步行中段","Bugis MRT 進出最方便"],"Visit Singapore 官方介紹","https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/kampong-gelam/"),
-  guide("jewel",["d5-3","d5-5","d5-6"],"星耀樟宜與 Rain Vortex","💧","星耀樟宜把機場、購物中心與室內花園結合，核心的 HSBC Rain Vortex 從玻璃穹頂中央落下，周圍則是 Shiseido Forest Valley 的分層步道。",["HSBC Rain Vortex","Shiseido Forest Valley","不同樓層的瀑布視角","最後採買伴手禮"],["瀑布啟動時間可能調整，出發前查看官網","先完成報到或寄放行李，再輕裝參觀","保留足夠時間返回航廈與通關"],"Jewel Changi Airport 官方介紹","https://www.jewelchangiairport.com/en/attractions/hsbc-rain-vortex.html")
+  guide("merlion",["d1-5"],"魚尾獅公園與濱海灣","🦁","魚尾獅以獅頭與魚身象徵「獅城」與新加坡早期漁村的記憶。公園正對濱海灣，是第一次到訪時理解城市天際線最直觀的一站。","魚尾獅由 Kwan Sai Kheong 設計、Lim Nang Seng 製作，1972 年揭幕。魚身連結淡馬錫漁村起源，獅頭則呼應 Singapura「獅城」之名；其後因濱海灣岸線與橋梁改變，2002 年遷至現址。",["先在 Fullerton 一側看魚尾獅全貌，辨認魚身、獅頭與出水方向。","走到水池正面拍經典取景，再換到側面避開人潮。","面向海灣辨認金沙酒店、藝術科學博物館與 Esplanade。","沿濱海灣步道慢走，傍晚接晚餐與夜景最順。"],"Visit Singapore 官方介紹","https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/marina-bay/merlion-park/"),
+  guide("gardens",["d1-7"],"濱海灣花園","🌳","這座大型城市花園把熱帶植物、永續工程與未來感建築結合。Supertree Grove、Cloud Forest 和 Flower Dome 各有不同體驗，夜間燈光尤其值得保留時間。","濱海灣花園於 2012 年正式開放，是新加坡「花園中的城市」策略的重要工程。18 座 Supertree 是垂直花園，其中 12 座位於 Supertree Grove，部分結合太陽能、雨水收集與溫室排氣等功能。",["天色尚亮時先看 Supertree 樹幹上的蕨類、蘭花與攀藤植物。","若有溫室票，先進 Cloud Forest 或 Flower Dome，避免錯過最後入場。","日落後回到 Supertree Grove，先找視野開闊的位置。","觀賞 Garden Rhapsody 聲光秀；結束後等人潮散開再拍夜景。"],"Gardens by the Bay 官方介紹","https://www.gardensbythebay.com.sg/en/learn-with-us/explore-resources/articles/supertree-grove-and-supertree-observatory.html"),
+  guide("uss",["d2-3","d2-4","d2-6","d2-7"],"新加坡環球影城","🎬","東南亞的環球影城主題樂園，以電影、動畫主題設施、表演和角色見面為主。熱門設施等待時間起伏大，進園後要依官方 App 即時調整順序。","新加坡環球影城於 2010 年試營運、2011 年正式開幕，是聖淘沙名勝世界的重要組成。園區以環形動線連接不同主題區，持續透過新角色與園區更新，例如 Minion Land，讓遊園策略跟著設施變化。",["入園先看官方 App：確認暫停設施、表演時間與熱門排隊。","先玩 Transformers、Battlestar Galactica 或 Revenge of the Mummy 等高需求設施。","中午安排室內用餐與表演，避開最熱時段並恢復體力。","下午補角色見面與家庭型設施，閉園前再看等待時間決定二刷。"],"Resorts World Sentosa 官方介紹","https://www.rwsentosa.com/en/play/universal-studios-singapore"),
+  guide("river-wonders",["d3-3","d3-5"],"River Wonders","🐼","以世界河川與淡水生態為主題的野生動物園，可沿河域動線認識水生與陸生動物，重點包括大熊貓、Amazon Flooded Forest 與大型淡水魚類。","園區前身 River Safari 於 2013 年全面開放，2021 年更名為 River Wonders，更清楚呈現以河流生命與淡水棲地為核心的定位。官方稱其為亞洲首座河川主題野生動物園。",["從世界河川展區開始，按標示順向前進，避免回頭走。","大熊貓展區可稍作休息；動物活動度依氣溫與時間不同。","進 Amazon Flooded Forest 從不同高度觀察海牛、巨型水獺與水下空間。","若搭 Amazon River Quest 或看表演，先確認另購票與預約規則。"],"Mandai Wildlife Reserve 官方介紹","https://www.mandai.com/en/river-wonders.html"),
+  guide("night-safari",["d3-8"],"Night Safari","🦉","以夜行性動物與夜間棲地為主題，可搭 Safari Adventure Tram 快速掌握園區，再依體力走步道近距離觀察。讓眼睛適應暗處、避免閃光，體驗會更好。","Night Safari 於 1994 年開幕，被定位為世界首座夜間野生動物園。它運用低照度環境、自然屏障與夜間活動節奏，讓訪客在不模擬白天的前提下觀察動物。",["依票券時段提早抵達，先確認 Tram 與 Creatures of the Night 場次。","若表演時間接近先看表演，否則先搭 Tram 建立園區方向感。","下車後選一至兩條步道慢走，不必急著全部走完。","拍照關閉閃光並降低螢幕亮度；離園前提早叫車。"],"Mandai Wildlife Reserve 官方說明","https://www.mandai.com/en/book-presentation-seats.html"),
+  guide("orchard",["d4-2"],"Orchard Road","🛍️","烏節路是新加坡最集中的購物帶之一，從國際精品、百貨公司到地下連通道都很完整。這一站適合依品牌需求分段，不必每一間商場都進。","烏節路早期一帶多果園與種植園，名稱也由此而來。隨城市發展，20 世紀逐步轉型為商業與零售走廊，形成今日串連大型商場、飯店與公共藝術的城市街道。",["從 ION Orchard 開始，先處理最想買的品牌與退稅需求。","沿地下或有遮蔽通道前往 Wisma Atria、Ngee Ann City。","在 Takashimaya 或美食樓層休息補水，避免全程曝曬。","依戰利品數量決定是否提早回飯店放置，再前往 Bugis。"],"Visit Singapore 烏節路介紹","https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/orchard-road/"),
+  guide("kampong-gelam",["d4-4"],"Bugis・Haji Lane・Kampong Glam","🕌","甘榜格南是新加坡歷史悠久的城市街區，蘇丹回教堂、傳統商店、街頭藝術與新式咖啡館並存；Haji Lane 則以壁畫、獨立小店和狹窄街景聞名。","這一帶曾是馬來王室所在地，也是來自馬來群島、印度、中東與中國商人聚集的社區。Kampong 意指聚落，Gelam 指當地曾常見、可用於造船與藥用的格南樹；Haji Lane 之名則與前往麥加朝聖者的住宿歷史相關。",["從蘇丹回教堂與 Bussorah Street 開始，先看街區主軸。","繞到 Arab Street 看布料、香氛與傳統商店。","走進 Haji Lane 看壁畫與獨立小店，巷道窄時留意車輛。","在咖啡館休息後往 Bugis 方向離開，沿途補看街頭藝術。"],"Visit Singapore 官方介紹","https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/kampong-gelam/"),
+  guide("chinatown",["d4-7"],"牛車水與新加坡河夜景","🏮","牛車水保存華人移民街區、宗教建築與熟食文化，晚上可接新加坡河與克拉碼頭。若這天購物較久，可以只選一段慢走，不必全部塞滿。","牛車水自 19 世紀逐漸成為華人移民生活與商業核心，街區名稱常被解釋為早期以牛車運送食水的記憶。周邊寺廟、會館與店屋反映多族群在港口城市共同生活的歷史。",["從 Chinatown MRT 出站，沿寶塔街或史密斯街進入店屋區。","視開放時間看佛牙寺外觀與周邊宗教建築。","到 Chinatown Complex 或附近熟食中心補吃小吃。","有體力再往新加坡河或克拉碼頭移動，沒體力就直接回飯店。"],"Visit Singapore 牛車水介紹","https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/chinatown/"),
+  guide("jewel",["d5-3","d5-5","d5-6"],"星耀樟宜與 Rain Vortex","💧","星耀樟宜把機場、購物中心與室內花園結合，核心的 HSBC Rain Vortex 從玻璃穹頂中央落下，周圍是 Shiseido Forest Valley 的分層步道。","星耀樟宜於 2019 年開幕，由 Safdie Architects 設計。Rain Vortex 利用穹頂集水並循環運作，成為室內自然景觀與航空樞紐結合的代表；它同時連接樟宜機場多座航廈。",["先完成航空公司報到或寄放行李，避免拖行李上下樓。","從較高樓層看穹頂與瀑布全景，再沿 Forest Valley 往下走。","到底層近看水幕與植栽，注意水氣與濕滑區域。","最後採買伴手禮，設定離開星耀、返回航廈的最晚時間。"],"Jewel Changi Airport 官方介紹","https://www.jewelchangiairport.com/en/attractions/hsbc-rain-vortex.html")
 ];
 
 export function guideForEvent(guides:AttractionGuide[],eventId:string){return guides.find(item=>item.eventIds.includes(eventId));}

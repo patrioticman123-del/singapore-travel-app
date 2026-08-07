@@ -75,6 +75,75 @@ button { color:inherit; }
 .guide-section li { margin:8px 0; font-size:15px; line-height:1.6; }
 .guide-source { display:block; margin-top:22px; padding:13px; border-radius:12px; color:white; background:var(--teal); text-align:center; text-decoration:none; font-size:14px; font-weight:800; }
 
+/* Singapore style selector: five light themes change the whole app together. */
+.hero-actions { display:flex; align-items:center; gap:8px; }
+.style-main-button { flex:0 0 auto; }
+.style-description { margin:-4px 0 16px; color:#58716e; font-size:14px; line-height:1.6; }
+.style-options { display:grid; gap:10px; }
+.style-option { position:relative; display:grid; grid-template-columns:1fr auto; gap:4px 10px; min-height:96px; padding:14px; overflow:hidden; border:2px solid transparent; border-radius:16px; text-align:left; cursor:pointer; }
+.style-option.selected { border-color:var(--teal); box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 15%,transparent); }
+.style-option small { grid-column:1/-1; font-size:12px; opacity:.72; }
+.style-option strong { font-size:22px; letter-spacing:.08em; }
+.style-option b { align-self:end; font-size:14px; }
+.style-check { position:absolute; right:10px; top:9px; display:grid; place-items:center; width:24px; height:24px; border-radius:50%; color:white; background:var(--teal); font-weight:900; }
+.preview-orchid { color:#6b3658; background:linear-gradient(135deg,#fff8f4,#f3bfd4); font-family:Georgia,"Noto Serif TC",serif; }
+.preview-garden { color:#315e4b; background:linear-gradient(135deg,#fbfff5,#cce8cf); font-family:Georgia,"Noto Serif TC",serif; }
+.preview-peranakan { color:#14546a; background:radial-gradient(circle at 88% 25%,#ffb59f 0 13%,transparent 14%),linear-gradient(135deg,#fff8df,#9edbd5); font-family:"Trebuchet MS","Noto Sans TC",sans-serif; }
+.preview-sunrise { color:#74452a; background:linear-gradient(135deg,#fff9d9,#ffd18d 55%,#ffb59d); font-family:"Arial Rounded MT Bold","Noto Sans TC",sans-serif; }
+.preview-marina { color:#23516b; background:linear-gradient(135deg,#f8fdff,#b9e5f4); font-family:"Trebuchet MS","Noto Sans TC",sans-serif; }
+
+.app-theme-orchid { --ink:#573848; --teal:#a34772; --mint:#f4dce8; --paper:#fff8f6; --cream:#fffdfb; --coral:#d96f8e; --gold:#d6a64e; --line:rgba(108,54,81,.14); font-family:Georgia,"Noto Serif TC",serif; background:radial-gradient(circle at 80% 0%,#fff7fa,#f4dce5 72%); }
+.app-theme-garden { --ink:#315344; --teal:#4c8067; --mint:#dcefdc; --paper:#f7faef; --cream:#fffff8; --coral:#e27c69; --gold:#c7a64c; --line:rgba(50,91,69,.15); font-family:Georgia,"Noto Serif TC",serif; background:radial-gradient(circle at 78% 0%,#fffdeb,#dcecd6 72%); }
+.app-theme-peranakan { --ink:#164d60; --teal:#168290; --mint:#d5efeb; --paper:#fff8e9; --cream:#fffdf7; --coral:#e87870; --gold:#dfad43; --line:rgba(20,91,105,.15); font-family:"Trebuchet MS","Noto Sans TC",sans-serif; background:radial-gradient(circle at 92% 8%,rgba(255,176,154,.5) 0 7%,transparent 8%),linear-gradient(150deg,#fff7dd,#c9ebe5); }
+.app-theme-sunrise { --ink:#69432f; --teal:#c16b4c; --mint:#ffead3; --paper:#fff7e7; --cream:#fffdf6; --coral:#e97862; --gold:#d79b29; --line:rgba(120,76,45,.15); font-family:"Arial Rounded MT Bold","Noto Sans TC",sans-serif; background:linear-gradient(160deg,#fffce4,#ffe0ac 60%,#ffd2c2); }
+.app-theme-marina { --ink:#234d63; --teal:#2b829c; --mint:#d8eef5; --paper:#f4fbfd; --cream:#fcfeff; --coral:#ef806d; --gold:#d5a53b; --line:rgba(34,94,120,.14); font-family:"Trebuchet MS","Noto Sans TC",sans-serif; background:linear-gradient(165deg,#fbfeff,#d8f1f7 58%,#eef6df); }
+
+.hero-style-orchid { --hero-overlay:linear-gradient(110deg,rgba(255,249,246,.94),rgba(243,188,211,.78)); color:#653b55; background:linear-gradient(135deg,#fffaf5,#f3bfd4 62%,#e99bb8); }
+.hero-style-garden { --hero-overlay:linear-gradient(110deg,rgba(255,255,244,.94),rgba(190,224,192,.78)); color:#315344; background:linear-gradient(135deg,#fffde9,#cfe7c8 62%,#a9d0b1); }
+.hero-style-peranakan { --hero-overlay:linear-gradient(110deg,rgba(255,251,230,.94),rgba(147,216,209,.72)); color:#15516a; background:radial-gradient(circle at 88% 20%,#ffb198 0 12%,transparent 13%),radial-gradient(circle at 78% 78%,#f3c758 0 17%,transparent 18%),linear-gradient(135deg,#fff4cf,#a5ddd6); }
+.hero-style-sunrise { --hero-overlay:linear-gradient(110deg,rgba(255,253,226,.94),rgba(255,184,150,.7)); color:#73472f; background:linear-gradient(140deg,#fffbd9,#ffd28d 58%,#ffad9d); }
+.hero-style-marina { --hero-overlay:linear-gradient(110deg,rgba(248,254,255,.94),rgba(165,221,239,.76)); color:#24516c; background:linear-gradient(140deg,#f8feff,#b9e5f2 60%,#8acbdc); }
+.hero[class*="hero-style-"] .settings-button { color:currentColor; border-color:color-mix(in srgb,currentColor 28%,transparent); background:rgba(255,255,255,.42); }
+.hero[class*="hero-style-"] .trip-meta span { background:rgba(255,255,255,.42); }
+.hero-style-orchid h1,.app-theme-orchid .day-styled h2 { font-family:Georgia,"Noto Serif TC",serif; font-style:italic; letter-spacing:.07em; }
+.hero-style-garden h1,.app-theme-garden .day-styled h2 { font-family:Georgia,"Noto Serif TC",serif; letter-spacing:.04em; }
+.hero-style-peranakan h1,.app-theme-peranakan .day-styled h2 { font-family:"Trebuchet MS","Noto Sans TC",sans-serif; font-weight:900; letter-spacing:.03em; }
+.hero-style-sunrise h1,.app-theme-sunrise .day-styled h2 { font-family:"Arial Rounded MT Bold","Noto Sans TC",sans-serif; font-weight:800; letter-spacing:.02em; }
+.hero-style-marina h1,.app-theme-marina .day-styled h2 { font-family:"Trebuchet MS","Noto Sans TC",sans-serif; font-weight:800; letter-spacing:.02em; }
+.day-styled { position:relative; min-height:136px; padding:18px; align-items:flex-end; overflow:hidden; border-radius:18px; box-shadow:0 12px 28px rgba(40,74,65,.10); }
+.app-theme-orchid .day-styled { --day-overlay:linear-gradient(105deg,rgba(255,249,246,.94),rgba(240,170,201,.55)); color:#6b3658; background:linear-gradient(135deg,#fff9f1,#f5c7da 62%,#eca7c2); border:1px solid #e9afc8; }
+.app-theme-garden .day-styled { --day-overlay:linear-gradient(105deg,rgba(255,255,243,.94),rgba(167,207,173,.55)); color:#315d49; background:linear-gradient(135deg,#fffde9,#d8ebcd 62%,#add3b3); border:1px solid #b8d0ac; }
+.app-theme-peranakan .day-styled { --day-overlay:linear-gradient(105deg,rgba(255,251,230,.94),rgba(120,201,196,.52)); color:#15536a; background:radial-gradient(circle at 88% 20%,#ffaf98 0 12%,transparent 13%),radial-gradient(circle at 82% 72%,#f2c454 0 17%,transparent 18%),linear-gradient(135deg,#fff4ce,#a4ddd4); border:2px solid #45a9a7; }
+.app-theme-sunrise .day-styled { --day-overlay:linear-gradient(105deg,rgba(255,254,229,.94),rgba(255,175,142,.52)); color:#74472e; background:linear-gradient(140deg,#fffbd8,#ffd38f 58%,#ffad99); border:1px solid #efa979; }
+.app-theme-marina .day-styled { --day-overlay:linear-gradient(105deg,rgba(249,254,255,.94),rgba(135,204,226,.5)); color:#24516b; background:linear-gradient(140deg,#f8feff,#c3eaf4 60%,#93d0e0); border:1px solid #9acddd; }
+.section-heading.day-styled.day-cover { color:var(--ink); }
+.section-heading.day-styled.day-cover p,.section-heading.day-styled.day-cover>div>span { color:inherit; opacity:.78; }
+
+/* Detailed guides and food world */
+.explore-switch { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:22px; padding:5px; border:1px solid var(--line); border-radius:15px; background:var(--mint); }
+.explore-switch button { border:0; border-radius:11px; padding:12px 8px; color:var(--ink); background:transparent; font-size:14px; font-weight:800; cursor:pointer; }
+.explore-switch button.active { color:white; background:var(--teal); box-shadow:0 6px 14px color-mix(in srgb,var(--teal) 24%,transparent); }
+.guide-title { display:flex; align-items:center; gap:11px; }.guide-title>span { display:grid; place-items:center; width:48px; height:48px; border-radius:15px; background:var(--mint); font-size:27px; }
+.guide-tabs { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin:4px 0 18px; padding:4px; border-radius:13px; background:var(--mint); }
+.guide-tabs button { border:0; border-radius:10px; padding:10px 5px; background:transparent; font-size:13px; font-weight:800; cursor:pointer; }
+.guide-tabs button.active { color:white; background:var(--teal); }
+.guide-content h3 { margin:0 0 10px; font-family:Georgia,"Noto Serif TC",serif; font-size:21px; }
+.guide-content>p { white-space:pre-line; margin:0; font-size:16px; line-height:1.85; }
+.guide-content ol { display:grid; gap:11px; margin:0; padding:0; list-style:none; }
+.guide-content li { display:grid; grid-template-columns:32px 1fr; gap:10px; align-items:start; }
+.guide-content li>span { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; color:white; background:var(--teal); font-weight:900; }
+.guide-content li p { margin:3px 0 0; font-size:15px; line-height:1.65; }
+.food-heading { margin-top:4px; }
+.food-list { display:grid; gap:14px; }
+.food-card { padding:16px; border:1px solid var(--line); border-radius:18px; background:white; box-shadow:0 8px 24px rgba(29,61,57,.05); }
+.food-card-head { display:grid; grid-template-columns:48px 1fr auto; gap:11px; align-items:center; }
+.food-card-head>span { display:grid; place-items:center; width:48px; height:48px; border-radius:14px; background:var(--mint); font-size:25px; }
+.food-card-head small { color:var(--coral); font-size:11px; font-weight:800; }.food-card-head h3 { margin:3px 0 0; font-size:18px; }.food-card-head>b { max-width:90px; color:var(--teal); font-size:12px; text-align:right; }
+.food-card>p { margin:13px 0; color:#52706d; font-size:14px; line-height:1.65; }
+.dish-tags { display:flex; flex-wrap:wrap; gap:6px; }.dish-tags span { padding:6px 8px; border-radius:8px; color:var(--ink); background:var(--mint); font-size:12px; }
+.food-note { display:block; margin-top:11px; color:#9a584c; font-size:12px; line-height:1.5; }
+.food-card>a { display:block; margin-top:13px; padding:11px; border-radius:11px; color:white; background:var(--teal); text-align:center; text-decoration:none; font-size:14px; font-weight:800; }
+
 /* Icon-only itinerary actions */
 .event-actions.icon-actions { gap:10px; }
 .icon-actions a,.icon-actions button { display:grid; place-items:center; width:46px; height:46px; padding:0; border-radius:14px; font-size:23px; line-height:1; }
