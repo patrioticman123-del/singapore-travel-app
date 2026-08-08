@@ -249,3 +249,33 @@ body { font-size:17px; }
 .font-preview small { color:var(--coral); font-size:.72em; font-weight:900; }.font-preview strong { font-size:1.05em; }.font-preview p { margin:0; font-size:.9em; line-height:1.55; opacity:.72; }
 .bottom-nav button { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; min-width:0; min-height:42px; padding:4px 2px; font-size:11px!important; line-height:1.05; white-space:nowrap; }
 .bottom-nav button span { flex:0 0 22px; height:22px; font-size:20px!important; line-height:22px; }
+
+/* Uploaded covers fill their frames; modest cropping is preferred to blank bands. */
+.hero.has-image { --hero-overlay:linear-gradient(110deg,rgba(18,39,55,.58),rgba(18,39,55,.16)); background-size:100% 100%,cover; background-position:center,center 42%; background-repeat:no-repeat,no-repeat; }
+.app-shell .day-styled.day-cover { --day-overlay:linear-gradient(105deg,rgba(20,35,45,.62),rgba(20,35,45,.12)); min-height:180px; color:white; background-size:100% 100%,cover; background-position:center,center 42%; background-repeat:no-repeat,no-repeat; }
+.app-shell .day-styled.day-cover p,.app-shell .day-styled.day-cover>div>span { color:white; opacity:.84; }
+
+/* Editing list mirrors the itinerary timeline and keeps normal reading size. */
+.day-edit { display:block; }
+.day-edit-fields { display:grid; gap:12px; padding-top:15px; border-top:1px solid var(--line); }
+.editor-section-toggle,.edit-card-toggle { display:grid; align-items:center; width:100%; border:0; background:none; text-align:left; cursor:pointer; }
+.editor-section-toggle { grid-template-columns:1fr auto; gap:12px; padding:0; }
+.editor-section-toggle span,.editor-section-toggle strong,.editor-section-toggle small { display:block; }
+.editor-section-toggle strong { font-family:Georgia,"Noto Serif TC",serif; font-size:calc(18px * var(--font-scale)); }
+.editor-section-toggle small { margin-top:5px; font-size:calc(13px * var(--font-scale)); opacity:.62; }
+.editor-section-toggle>b { font-size:22px; opacity:.45; }
+.edit-list { position:relative; margin-bottom:16px; }
+.edit-list:before { content:""; position:absolute; left:86px; top:12px; bottom:12px; width:1px; background:var(--line); }
+.edit-card { position:relative; border-bottom:1px solid var(--line); }
+.edit-card.panel { padding:0; overflow:hidden; border-color:#94b9b2; }
+.edit-card-toggle { grid-template-columns:72px 12px 1fr 16px; gap:8px; padding:16px 0; }
+.edit-card.panel .edit-card-toggle { padding:16px 15px; background:var(--mint); }
+.edit-card-toggle time { font-size:calc(13px * var(--font-scale)); font-weight:800; padding-top:3px; }
+.edit-card-toggle .dot { display:block; }
+.edit-card-copy,.edit-card-copy strong,.edit-card-copy small { display:block; min-width:0; }
+.edit-card-copy strong { font-size:calc(17px * var(--font-scale)); line-height:1.35; }
+.edit-card-copy small { margin-top:5px; color:var(--teal); font-size:calc(12px * var(--font-scale)); }
+.edit-card-toggle .chevron { font-size:20px; opacity:.45; transition:transform .2s; }
+.edit-card.open .edit-card-toggle .chevron { transform:rotate(180deg); }
+.edit-card-body { padding:16px; }
+@media (max-width:370px) { .edit-list:before { left:76px; }.edit-card-toggle { grid-template-columns:62px 12px 1fr 12px; } }
