@@ -279,3 +279,5 @@ body { font-size:17px; }
 .edit-card.open .edit-card-toggle .chevron { transform:rotate(180deg); }
 .edit-card-body { padding:16px; }
 @media (max-width:370px) { .edit-list:before { left:76px; }.edit-card-toggle { grid-template-columns:62px 12px 1fr 12px; } }
+.timeline-item.next .dot { animation:current-stop-pulse 1.35s ease-in-out infinite; }
+@keyframes current-stop-pulse { 0%,100% { box-shadow:0 0 0 3px rgba(239,112,93,.18); opacity:1; } 50% { box-shadow:0 0 0 8px rgba(239,112,93,.05); opacity:.45; } }
